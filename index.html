@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js"></script>
+    <title>Wien Öffi stationen entfernungs service</title>
+
+    <script>
+        Zepto(function($){
+
+            $('#send').click(function() {
+                $.ajax({url:'/path', data: editor.get() , dataType:'json', type: 'POST', success: function(data){
+                    $('#result').text(JSON.stringify(data, null, 4));
+                }, error: function(xhr) { $('#result').text(xhr);console.log(xhr)}})
+                //$('#result').text(JSON.stringify(editor.get(), null, 4));
+            })
+        })
+    </script>
+</head>
+<body>
+<table><tr><td>Von:</td><td><input id="von">   </td></tr><tr><td>Nach:</td><td><input id="nach">   </td></tr>
+<tr><td></td><td><input type="button" id="send"> </td></tr>
+    <tr><td>result</td><td><pre id="result"></pre> </td></tr>
+
+</table>
+</body>
+</html>
